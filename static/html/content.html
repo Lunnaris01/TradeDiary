@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Manager</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="landing-container">
+        <!-- Tab Navigation -->
+        <div class="tab-navigation">
+            <button class="tab-button active" data-tab="show-trades">Show Trades</button>
+            <button class="tab-button" data-tab="add-trade">Add Trade</button>
+        </div>
+
+        <!-- Show Trades Tab -->
+        <div id="show-trades" class="tab-content active">
+            <h2>Show Trades</h2>
+            <table id="trades-table">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Symbol</th>
+                        <th>Price</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Trades will be dynamically populated here -->
+                </tbody>
+            </table>
+        </div>
+                
+        <!-- Add Trade Tab -->
+        <div id="add-trade" class="tab-content">
+            <h2>Add Trade</h2>
+            <form id="add-trade-form">
+                <div class="input-group">
+                    <label for="symbol">Symbol</label>
+                    <input type="text" id="symbol" name="symbol" required>
+                </div>
+                <div class="input-group">
+                    <label for="price">Price</label>
+                    <input type="number" id="price" name="price" step="0.01" required>
+                </div>
+                <div class="input-group">
+                    <label for="order-type">Order Type</label>
+                    <select id="order-type" name="order_type" required>
+                        <option value="buy">Buy</option>
+                        <option value="sell">Sell</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="order-time">Order Time</label>
+                    <input type="datetime-local" id="order-time" name="order_time" required>
+                </div>
+                <button type="submit" class="btn sign-in">Add Trade</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="content.js"></script>
+</body>
+</html>
