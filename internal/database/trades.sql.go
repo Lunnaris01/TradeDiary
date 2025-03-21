@@ -53,7 +53,7 @@ func (q *Queries) CreateTrade(ctx context.Context, arg CreateTradeParams) (Trade
 }
 
 const getUserTrades = `-- name: GetUserTrades :many
-SELECT id, user_id, order_time, symbol, price, order_type, created_at, updated_at FROM trades WHERE user_id = $1 ORDER BY order_time
+SELECT id, user_id, order_time, symbol, price, order_type, created_at, updated_at FROM trades WHERE user_id = $1 ORDER BY order_time DESC
 `
 
 func (q *Queries) GetUserTrades(ctx context.Context, userID int32) ([]Trade, error) {

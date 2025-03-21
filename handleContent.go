@@ -27,6 +27,7 @@ func (cfg apiConfig) handlerDashboard(w http.ResponseWriter, r *http.Request) {
 func (cfg apiConfig) handlerGetTrades(w http.ResponseWriter, r *http.Request) {
 
 	type JsonTrade struct {
+		ID         int32     `json:"id"`
 		Symbol     string    `json:"symbol"`
 		Price      float64   `json:"price"`
 		Order_type string    `json:"order_type"`
@@ -71,6 +72,7 @@ func (cfg apiConfig) handlerGetTrades(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		jsonTrades[i] = JsonTrade{
+			ID:         trades[i].ID,
 			Symbol:     trades[i].Symbol,
 			Price:      price,
 			Order_type: trades[i].OrderType,
@@ -131,7 +133,7 @@ func (cfg apiConfig) handlerAddTrade(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	layout := "2006-01-02T15:04"
+	layout := "2006-01-02 15:04"
 	log.Printf("%v,%v", rBody.Order_type, rBody.Order_time)
 	parsedTime, err := time.Parse(layout, rBody.Order_time)
 	if err != nil {
@@ -155,5 +157,9 @@ func (cfg apiConfig) handlerAddTrade(w http.ResponseWriter, r *http.Request) {
 	log.Printf("Added Trade to the Database! %v", trade)
 	w.WriteHeader(http.StatusCreated)
 	w.Write([]byte("Added Successful"))
+
+}
+
+func (cfg apiConfig) handlerCloseTrade(w http.ResponseWriter, r *http.Request) {
 
 }

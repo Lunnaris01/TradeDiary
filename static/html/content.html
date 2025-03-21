@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trade Manager</title>
     <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
 </head>
 <body>
     <div class="landing-container">
@@ -20,10 +23,11 @@
             <table id="trades-table">
                 <thead>
                     <tr>
-                        <th>Type</th>
+                        <th>ID</th>
                         <th>Symbol</th>
                         <th>Price</th>
                         <th>Time</th>
+                        <th>Close Trade</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,12 +57,30 @@
                 </div>
                 <div class="input-group">
                     <label for="order-time">Order Time</label>
-                    <input type="datetime-local" id="order-time" name="order_time" required>
+                    <input type="text" id="order-time" name="order_time" required>
                 </div>
                 <button type="submit" class="btn sign-in">Add Trade</button>
             </form>
         </div>
     </div>
+
+
+        <!-- Close Trade Modal -->
+    <div id="close-trade-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Close Trade</h2>
+            <form id="close-trade-form">
+                <div class="input-group">
+                    <label for="close-time">Close Time</label>
+                    <input type="text" id="close-time" name="close_time" required>
+                </div>
+                <button type="submit" class="btn">Close Trade</button>
+            </form>
+        </div>
+    </div>
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     <script src="content.js"></script>
 </body>
